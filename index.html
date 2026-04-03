@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamar Chisolm — Founder & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0a0f; --bg2: #1a1a2e; --accent: #00f5d4; --accent2: #7b2cbf; --text: #e8e8e8; --text2: #888; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+        .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; z-index: 0; }
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+        .orb-2 { width: 300px; height: 300px; background: var(--accent2); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, 20px); } }
+        .content { position: relative; z-index: 1; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .glow { text-shadow: 0 0 20px rgba(0,245,212,0.5); }
+        .btn { padding: 12px 28px; border: 1px solid var(--accent); color: var(--accent); background: transparent; font-family: 'JetBrains Mono', monospace; font-size: 14px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .btn::before { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); transition: transform 0.3s ease; z-index: -1; }
+        .btn:hover { color: var(--bg); }
+        .btn:hover::before { transform: translateX(0); }
+        .skill-card { background: linear-gradient(135deg, rgba(26,26,46,0.8), rgba(10,10,15,0.8)); border: 1px solid rgba(0,245,212,0.1); padding: 24px; transition: all 0.4s ease; }
+        .skill-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .project-card { background: linear-gradient(135deg, rgba(26,26,46,0.6), rgba(10,10,15,0.8)); border: 1px solid rgba(255,255,255,0.05); padding: 32px; transition: all 0.4s ease; }
+        .project-card:hover { border-color: var(--accent); box-shadow: 0 0 40px rgba(0,245,212,0.1); }
+        .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3; }
+        nav a { color: var(--text2); transition: color 0.3s ease; }
+        nav a:hover { color: var(--accent); }
+        .typewriter { overflow: hidden; border-right: 2px solid var(--accent); white-space: nowrap; animation: typing 3s steps(30) 1s forwards, blink 0.8s step-end infinite; width: 0; }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink { 50% { border-color: transparent; } }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="content">
+        <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center" style="background: rgba(10,10,15,0.8); backdrop-filter: blur(10px);">
+            <span class="mono text-sm" style="color: var(--accent);">LC</span>
+            <div class="flex gap-8">
+                <a href="#about" class="mono text-sm">About</a>
+                <a href="#skills" class="mono text-sm">Skills</a>
+                <a href="#projects" class="mono text-sm">Projects</a>
+                <a href="#contact" class="mono text-sm">Contact</a>
+            </div>
+        </nav>
+        <section class="min-h-screen flex items-center justify-center px-8">
+            <div class="text-center max-w-4xl">
+                <p class="mono text-sm mb-4 tracking-widest" style="color: var(--accent);">FOUNDER & DEVELOPER</p>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">I Build Systems<br><span style="color: var(--accent);">That Think.</span></h1>
+                <div class="overflow-hidden mb-8"><p class="typewriter mono text-lg" style="color: var(--text2);">Full-stack engineer specializing in multi-agent architectures</p></div>
+                <p class="text-xl mb-12" style="color: var(--text2);">Real-time dashboards. Autonomous agent networks.<br>Infrastructure that scales quietly — without the buzzword theater.</p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <a href="https://github.com/lamarchisolm" class="btn">GitHub</a>
+                    <a href="https://t.me/lamarchisolm" class="btn">Telegram</a>
+                    <a href="mailto:lamarchisolm@proton.me" class="btn">Email</a>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="py-32 px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="divider mb-16"></div>
+                <p class="mono text-sm mb-4" style="color: var(--accent);">// ABOUT</p>
+                <h2 class="text-4xl font-bold mb-8 reveal">INTJ. Systems thinker.</h2>
+                <p class="text-xl leading-relaxed mb-8" style="color: var(--text2);">I don't ship features — I design states. My work sits at the intersection of autonomous agents, encrypted infrastructure, and interfaces that don't get in the way.</p>
+                <p class="text-xl leading-relaxed" style="color: var(--text2);">Built distributed systems before it was trending, and I'll build them after the hype dies.</p>
+                <p class="mono text-lg mt-8" style="color: var(--accent);">→ Architecting the infrastructure of independent agents.</p>
+            </div>
+        </section>
+        <section id="skills" class="py-32 px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="divider mb-16"></div>
+                <p class="mono text-sm mb-4" style="color: var(--accent);">// STACK</p>
+                <h2 class="text-4xl font-bold mb-12 reveal">What I work with.</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">React + TypeScript + Vite</h3><p style="color: var(--text2);">Zero-tolerance for runtime surprises. Type-safe UIs built at the speed of thought.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Node.js + Cloudflare Workers</h3><p style="color: var(--text2);">Edge-native. Sub-millisecond cold starts. Your API lives at the frontier.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Multi-Agent Orchestration</h3><p style="color: var(--text2);">Autonomous agents that coordinate, decide, and execute — no human in the loop by design.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Python + AI Integration</h3><p style="color: var(--text2);">LLMs that do work. Not chatbots — pipelines.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">PostgreSQL + Redis</h3><p style="color: var(--text2);">When the data matters, you don't compromise. Relational rigor with cache-layer speed.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Encrypted Infrastructure</h3><p style="color: var(--text2);">Zero-knowledge architectures. Your secrets don't touch the cloud unencrypted — ever.</p></div>
+                </div>
+            </div>
+        </section>
+        <section id="projects" class="py-32 px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="divider mb-16"></div>
+                <p class="mono text-sm mb-4" style="color: var(--accent);">// WORK</p>
+                <h2 class="text-4xl font-bold mb-12 reveal">Built to last.</h2>
+                <div class="space-y-6">
+                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Multi-Agent System</h3><p style="color: var(--text2);">An autonomous agent network where independent processes collaborate on complex goals. Each agent owns its domain, communicates via structured protocols, and escalates gracefully. Built for reliability — not demo appeal.</p></div>
+                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Dashboard</h3><p style="color: var(--text2);">Real-time operational intelligence. Data flows in, context emerges, decisions accelerate. Built with React + Cloudflare for zero-latency updates at the edge.</p></div>
+                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Respirator</h3><p style="color: var(--text2);">Health monitoring infrastructure that respects your privacy. End-to-end encrypted, self-hosted option, zero vendor lock-in. Because your biometric data isn't their product.</p></div>
+                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Encrypted Vault</h3><p style="color: var(--text2);">Secure storage architecture with military-grade encryption and zero-knowledge access patterns. Your secrets don't touch the cloud unencrypted — ever.</p></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="py-32 px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="divider mb-16"></div>
+                <p class="mono text-sm mb-4" style="color: var(--accent);">// CONTACT</p>
+                <h2 class="text-4xl font-bold mb-8">Let's build something.</h2>
+                <p class="text-xl mb-12" style="color: var(--text2);">Response time: < 24h. For serious inquiries only.</p>
+                <div class="flex gap-4 justify-center flex-wrap mb-16">
+                    <a href="mailto:lamarchisolm@proton.me" class="btn">lamarchisolm@proton.me</a>
+                    <a href="https://github.com/lamarchisolm" class="btn">GitHub</a>
+                    <a href="https://t.me/lamarchisolm" class="btn">Telegram</a>
+                </div>
+                <p class="mono text-sm" style="color: var(--text2);">Year of Launch — $20M+ valuation →</p>
+            </div>
+        </section>
+        <footer class="py-8 px-8 text-center">
+            <p class="mono text-sm" style="color: var(--text2);">© 2026 Lamar Chisolm. Built with precision.</p>
+        </footer>
+    </div>
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 100); } }); }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => { const scrolled = window.scrollY; document.querySelector('.orb-1').style.transform = `translate(${scrolled * 0.05}px, ${scrolled * 0.03}px)`; document.querySelector('.orb-2').style.transform = `translate(${scrolled * -0.05}px, ${scrolled * -0.02}px)`; });
+    </script>
+</body>
+</html>
