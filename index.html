@@ -21,7 +21,7 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .glow { text-shadow: 0 0 20px rgba(0,245,212,0.5); }
-        .btn { padding: 12px 28px; border: 1px solid var(--accent); color: var(--accent); background: transparent; font-family: 'JetBrains Mono', monospace; font-size: 14px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .btn { padding: 12px 28px; border: 1px solid var(--accent); color: var(--accent); background: transparent; font-family: 'JetBrains Mono', monospace; font-size: 14px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; text-decoration: none; display: inline-block; }
         .btn::before { content: ''; position: absolute; inset: 0; background: var(--accent); transform: translateX(-100%); transition: transform 0.3s ease; z-index: -1; }
         .btn:hover { color: var(--bg); }
         .btn:hover::before { transform: translateX(0); }
@@ -30,11 +30,25 @@
         .project-card { background: linear-gradient(135deg, rgba(26,26,46,0.6), rgba(10,10,15,0.8)); border: 1px solid rgba(255,255,255,0.05); padding: 32px; transition: all 0.4s ease; }
         .project-card:hover { border-color: var(--accent); box-shadow: 0 0 40px rgba(0,245,212,0.1); }
         .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3; }
-        nav a { color: var(--text2); transition: color 0.3s ease; }
+        nav a { color: var(--text2); transition: color 0.3s ease; text-decoration: none; }
         nav a:hover { color: var(--accent); }
-        .typewriter { overflow: hidden; border-right: 2px solid var(--accent); white-space: nowrap; animation: typing 3s steps(30) 1s forwards, blink 0.8s step-end infinite; width: 0; }
-        @keyframes typing { from { width: 0; } to { width: 100%; } }
-        @keyframes blink { 50% { border-color: transparent; } }
+        
+        /* Desktop typing animation */
+        @media (min-width: 641px) {
+            .typewriter { overflow: hidden; border-right: 2px solid var(--accent); white-space: nowrap; animation: typing 3s steps(30) 1s forwards, blink 0.8s step-end infinite; width: 0; display: inline-block; }
+            @keyframes typing { from { width: 0; } to { width: 100%; } }
+            @keyframes blink { 50% { border-color: transparent; } }
+        }
+        /* Mobile: no animation */
+        @media (max-width: 640px) {
+            .typewriter { white-space: normal; border: none; animation: none; }
+            .hero-padding { padding-top: 80px; }
+            h1 { font-size: 2.5rem !important; line-height: 1.2 !important; }
+            .skill-card, .project-card { padding: 20px; }
+            nav { padding: 12px 16px !important; }
+            nav .flex.gap-8 { gap: 16px; }
+            nav a { font-size: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -42,7 +56,7 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="content">
-        <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center" style="background: rgba(10,10,15,0.8); backdrop-filter: blur(10px);">
+        <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center" style="background: rgba(10,10,15,0.9); backdrop-filter: blur(10px);">
             <span class="mono text-sm" style="color: var(--accent);">LC</span>
             <div class="flex gap-8">
                 <a href="#about" class="mono text-sm">About</a>
@@ -51,65 +65,65 @@
                 <a href="#contact" class="mono text-sm">Contact</a>
             </div>
         </nav>
-        <section class="min-h-screen flex items-center justify-center px-8">
+        <section class="min-h-screen flex items-center justify-center px-4 md:px-8 hero-padding">
             <div class="text-center max-w-4xl">
-                <p class="mono text-sm mb-4 tracking-widest" style="color: var(--accent);">FOUNDER & DEVELOPER</p>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">I Build Systems<br><span style="color: var(--accent);">That Think.</span></h1>
-                <div class="overflow-hidden mb-8"><p class="typewriter mono text-lg" style="color: var(--text2);">Full-stack engineer specializing in multi-agent architectures</p></div>
-                <p class="text-xl mb-12" style="color: var(--text2);">Real-time dashboards. Autonomous agent networks.<br>Infrastructure that scales quietly — without the buzzword theater.</p>
-                <div class="flex gap-4 justify-center flex-wrap">
+                <p class="mono text-xs md:text-sm mb-4 tracking-widest" style="color: var(--accent);">FOUNDER & DEVELOPER</p>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">I Build Systems<br><span style="color: var(--accent);">That Think.</span></h1>
+                <div class="mb-8"><p class="typewriter mono text-sm md:text-lg" style="color: var(--text2);">Full-stack engineer specializing in multi-agent architectures</p></div>
+                <p class="text-base md:text-xl mb-12" style="color: var(--text2);">Real-time dashboards. Autonomous agent networks.<br>Infrastructure that scales quietly — without the buzzword theater.</p>
+                <div class="flex gap-3 md:gap-4 justify-center flex-wrap">
                     <a href="https://github.com/lamarchisolm" class="btn">GitHub</a>
                     <a href="https://t.me/lamarchisolm" class="btn">Telegram</a>
-                    <a href="mailto:lamarchisolm@proton.me" class="btn">Email</a>
+                    <a href="mailto:lamarchisolm@gmail.com" class="btn">Email</a>
                 </div>
             </div>
         </section>
-        <section id="about" class="py-32 px-8">
+        <section id="about" class="py-16 md:py-32 px-4 md:px-8">
             <div class="max-w-3xl mx-auto">
-                <div class="divider mb-16"></div>
+                <div class="divider mb-8 md:mb-16"></div>
                 <p class="mono text-sm mb-4" style="color: var(--accent);">// ABOUT</p>
-                <h2 class="text-4xl font-bold mb-8 reveal">INTJ. Systems thinker.</h2>
-                <p class="text-xl leading-relaxed mb-8" style="color: var(--text2);">I don't ship features — I design states. My work sits at the intersection of autonomous agents, encrypted infrastructure, and interfaces that don't get in the way.</p>
-                <p class="text-xl leading-relaxed" style="color: var(--text2);">Built distributed systems before it was trending, and I'll build them after the hype dies.</p>
-                <p class="mono text-lg mt-8" style="color: var(--accent);">→ Architecting the infrastructure of independent agents.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 reveal">INTJ. Systems thinker.</h2>
+                <p class="text-lg md:text-xl leading-relaxed mb-8" style="color: var(--text2);">I don't ship features — I design states. My work sits at the intersection of autonomous agents, encrypted infrastructure, and interfaces that don't get in the way.</p>
+                <p class="text-lg md:text-xl leading-relaxed" style="color: var(--text2);">Built distributed systems before it was trending, and I'll build them after the hype dies.</p>
+                <p class="mono text-base md:text-lg mt-8" style="color: var(--accent);">→ Architecting the infrastructure of independent agents.</p>
             </div>
         </section>
-        <section id="skills" class="py-32 px-8">
+        <section id="skills" class="py-16 md:py-32 px-4 md:px-8">
             <div class="max-w-5xl mx-auto">
-                <div class="divider mb-16"></div>
+                <div class="divider mb-8 md:mb-16"></div>
                 <p class="mono text-sm mb-4" style="color: var(--accent);">// STACK</p>
-                <h2 class="text-4xl font-bold mb-12 reveal">What I work with.</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">React + TypeScript + Vite</h3><p style="color: var(--text2);">Zero-tolerance for runtime surprises. Type-safe UIs built at the speed of thought.</p></div>
-                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Node.js + Cloudflare Workers</h3><p style="color: var(--text2);">Edge-native. Sub-millisecond cold starts. Your API lives at the frontier.</p></div>
-                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Multi-Agent Orchestration</h3><p style="color: var(--text2);">Autonomous agents that coordinate, decide, and execute — no human in the loop by design.</p></div>
-                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Python + AI Integration</h3><p style="color: var(--text2);">LLMs that do work. Not chatbots — pipelines.</p></div>
-                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">PostgreSQL + Redis</h3><p style="color: var(--text2);">When the data matters, you don't compromise. Relational rigor with cache-layer speed.</p></div>
-                    <div class="skill-card reveal"><h3 class="mono text-lg mb-3" style="color: var(--accent);">Encrypted Infrastructure</h3><p style="color: var(--text2);">Zero-knowledge architectures. Your secrets don't touch the cloud unencrypted — ever.</p></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-12 reveal">What I work with.</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="skill-card reveal"><h3 class="mono text-base md:text-lg mb-2 md:mb-3" style="color: var(--accent);">React + TypeScript + Vite</h3><p style="color: var(--text2);">Zero-tolerance for runtime surprises. Type-safe UIs built at the speed of thought.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-base md:text-lg mb-2 md:mb-3" style="color: var(--accent);">Node.js + Cloudflare Workers</h3><p style="color: var(--text2);">Edge-native. Sub-millisecond cold starts. Your API lives at the frontier.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-base md:text-lg mb-2 md:mb-3" style="color: var(--accent);">Multi-Agent Orchestration</h3><p style="color: var(--text2);">Autonomous agents that coordinate, decide, and execute — no human in the loop by design.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-base md:text-lg mb-2 md:mb-3" style="color: var(--accent);">Python + AI Integration</h3><p style="color: var(--text2);">LLMs that do work. Not chatbots — pipelines.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-base md:text-lg mb-2 md:mb-3" style="color: var(--accent);">PostgreSQL + Redis</h3><p style="color: var(--text2);">When the data matters, you don't compromise. Relational rigor with cache-layer speed.</p></div>
+                    <div class="skill-card reveal"><h3 class="mono text-base md:text-lg mb-2 md:mb-3" style="color: var(--accent);">Encrypted Infrastructure</h3><p style="color: var(--text2);">Zero-knowledge architectures. Your secrets don't touch the cloud unencrypted — ever.</p></div>
                 </div>
             </div>
         </section>
-        <section id="projects" class="py-32 px-8">
+        <section id="projects" class="py-16 md:py-32 px-4 md:px-8">
             <div class="max-w-5xl mx-auto">
-                <div class="divider mb-16"></div>
+                <div class="divider mb-8 md:mb-16"></div>
                 <p class="mono text-sm mb-4" style="color: var(--accent);">// WORK</p>
-                <h2 class="text-4xl font-bold mb-12 reveal">Built to last.</h2>
-                <div class="space-y-6">
-                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Multi-Agent System</h3><p style="color: var(--text2);">An autonomous agent network where independent processes collaborate on complex goals. Each agent owns its domain, communicates via structured protocols, and escalates gracefully. Built for reliability — not demo appeal.</p></div>
-                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Dashboard</h3><p style="color: var(--text2);">Real-time operational intelligence. Data flows in, context emerges, decisions accelerate. Built with React + Cloudflare for zero-latency updates at the edge.</p></div>
-                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Respirator</h3><p style="color: var(--text2);">Health monitoring infrastructure that respects your privacy. End-to-end encrypted, self-hosted option, zero vendor lock-in. Because your biometric data isn't their product.</p></div>
-                    <div class="project-card reveal"><h3 class="text-2xl font-bold mb-3">Encrypted Vault</h3><p style="color: var(--text2);">Secure storage architecture with military-grade encryption and zero-knowledge access patterns. Your secrets don't touch the cloud unencrypted — ever.</p></div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-12 reveal">Built to last.</h2>
+                <div class="space-y-4 md:space-y-6">
+                    <div class="project-card reveal"><h3 class="text-xl md:text-2xl font-bold mb-3">Multi-Agent System</h3><p style="color: var(--text2);">An autonomous agent network where independent processes collaborate on complex goals. Each agent owns its domain, communicates via structured protocols, and escalates gracefully. Built for reliability — not demo appeal.</p></div>
+                    <div class="project-card reveal"><h3 class="text-xl md:text-2xl font-bold mb-3">Dashboard</h3><p style="color: var(--text2);">Real-time operational intelligence. Data flows in, context emerges, decisions accelerate. Built with React + Cloudflare for zero-latency updates at the edge.</p></div>
+                    <div class="project-card reveal"><h3 class="text-xl md:text-2xl font-bold mb-3">Respirator</h3><p style="color: var(--text2);">Health monitoring infrastructure that respects your privacy. End-to-end encrypted, self-hosted option, zero vendor lock-in. Because your biometric data isn't their product.</p></div>
+                    <div class="project-card reveal"><h3 class="text-xl md:text-2xl font-bold mb-3">Encrypted Vault</h3><p style="color: var(--text2);">Secure storage architecture with military-grade encryption and zero-knowledge access patterns. Your secrets don't touch the cloud unencrypted — ever.</p></div>
                 </div>
             </div>
         </section>
-        <section id="contact" class="py-32 px-8">
+        <section id="contact" class="py-16 md:py-32 px-4 md:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <div class="divider mb-16"></div>
+                <div class="divider mb-8 md:mb-16"></div>
                 <p class="mono text-sm mb-4" style="color: var(--accent);">// CONTACT</p>
-                <h2 class="text-4xl font-bold mb-8">Let's build something.</h2>
-                <p class="text-xl mb-12" style="color: var(--text2);">Response time: < 24h. For serious inquiries only.</p>
-                <div class="flex gap-4 justify-center flex-wrap mb-16">
-                    <a href="mailto:lamarchisolm@proton.me" class="btn">lamarchisolm@proton.me</a>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">Let's build something.</h2>
+                <p class="text-base md:text-xl mb-8 md:mb-12" style="color: var(--text2);">Response time: < 24h. For serious inquiries only.</p>
+                <div class="flex flex-col md:flex-row gap-3 md:gap-4 justify-center mb-8 md:mb-16">
+                    <a href="mailto:lamarchisolm@gmail.com" class="btn">lamarchisolm@gmail.com</a>
                     <a href="https://github.com/lamarchisolm" class="btn">GitHub</a>
                     <a href="https://t.me/lamarchisolm" class="btn">Telegram</a>
                 </div>
